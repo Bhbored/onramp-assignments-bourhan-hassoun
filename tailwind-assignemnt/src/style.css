@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  --surface: oklch(98.415% 0.00352 248.585);
+  --text-main: oklch(27.808% 0.02963 256.871);
+  --card-bg: oklch(100% 0.00011 271.152);
+  --brand: oklch(51.058% 0.23015 276.976);
+  --muted: oklch(55.439% 0.04078 257.446);
+}
+
+[data-theme="dark"] {
+  --surface: oklch(20.768% 0.03985 265.767);
+  --text-main: oklch(98.415% 0.00352 248.585);
+  --card-bg: oklch(27.95% 0.03688 260.049);
+  --brand: oklch(68.012% 0.1584 276.941);
+  --muted: oklch(71.068% 0.0352 256.828);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@theme {
+  --color-surface: var(--surface);
+  --color-text-main: var(--text-main);
+  --color-card: var(--card-bg);
+  --color-brand: var(--brand);
+  --color-muted: var(--muted);
+}

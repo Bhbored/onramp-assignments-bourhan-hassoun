@@ -1,16 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link href="/src/style.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>tailwind-assignemnt</title>
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 
 <body>
   <div id="app">
-    <p>here we go from here on out</p>
+    <div class="bg-surface min-h-screen flex flex-col items-center justify-center px-4 py-12 gap-8">
+      <div class="text-center space-y-2">
+        <h1 class="font-bold text-3xl text-text-main">Theme Switching Examples</h1>
+        <p class="text-muted">Toggle between light and dark modes</p>
+      </div>
+
+      <button
+        id="theme-toggle"
+        aria-label="Toggle theme"
+        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-card text-text-main border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+      >
+        <span id="theme-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </span>
+        <span id="theme-label">Light Mode</span>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+        <div class="bg-card text-text-main p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </div>
+          <h2 class="font-semibold text-lg">Dark Mode Ready</h2>
+          <p class="text-muted text-sm leading-relaxed">This card automatically adapts its colors when you switch themes. The background, text, and borders all respond to the data-theme attribute.</p>
+        </div>
+
+        <div class="bg-card text-text-main p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h2 class="font-semibold text-lg">Persistent Preference</h2>
+          <p class="text-muted text-sm leading-relaxed">Your theme choice is saved to localStorage and restored instantly on page load. The anti-flash script prevents any theme flicker.</p>
+        </div>
+
+        <div class="bg-card text-text-main p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"/></svg>
+          </div>
+          <h2 class="font-semibold text-lg">Custom Tokens</h2>
+          <p class="text-muted text-sm leading-relaxed">Colors are defined as semantic tokens in the Tailwind theme. Surface, card, text, and brand colors all flip automatically with the theme.</p>
+        </div>
+      </div>
+    </div>
   </div>
   <script type="module" src="/src/main.js"></script>
 </body>
